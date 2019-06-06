@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">zebal</string>
+    <string name="stop">stop</string>
+    <string name="main">main</string>
+    <string name="up">up</string>
+    <string name="down">down</string>
+    <string name="add">추가</string>
+    <string name="delete">삭제</string>
+    <string name="edit">편집</string>
+    <string name="edit_name">이름 변경</string>
+    <string name="edit_icon">아이콘 변경</string>
+    <string name="forward">전진</string>
+    <string name="turn_left">왼쪽으로 회전</string>
+    <string name="title">확인</string>
+    <string name="message">추가하기</string>
+    <string name="first">첫번째</string>
+    <string name="second">두번째</string>
+    <string name="third">세번째</string>
+    <string name="yes">예</string>
+    <string name="no">아니오</string>
+    <string name="speed">속도</string>
+</resources>

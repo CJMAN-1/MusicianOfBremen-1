@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_Piano"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.zebal.MainActivity"
+    >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button_d1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@android:drawable/editbox_background_normal"
+                android:onClick="mOnClick" />
+
+            <Button
+                android:id="@+id/button_re"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@android:drawable/editbox_background_normal"
+                android:onClick="mOnClick" />
+
+            <Button
+                android:id="@+id/button_mi"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@android:drawable/editbox_background_normal"
+                android:onClick="mOnClick" />
+
+            <Button
+                android:id="@+id/button_pa"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@android:drawable/editbox_background_normal"
+                android:onClick="mOnClick" />
+
+            <Button
+                android:id="@+id/button_sol"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@android:drawable/editbox_background_normal"
+                android:onClick="mOnClick" />
+
+            <Button
+                android:id="@+id/button_ra"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@android:drawable/editbox_background_normal"
+                android:onClick="mOnClick" />
+
+            <Button
+                android:id="@+id/button_si"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@android:drawable/editbox_background_normal"
+                android:onClick="mOnClick" />
+
+            <Button
+                android:id="@+id/button_d2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@android:drawable/editbox_background_normal"
+                android:onClick="mOnClick" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="200dp"
+                android:layout_height="0dp"
+                android:layout_gravity="right"
+                android:layout_weight="0.5"
+                android:background="@android:drawable/screen_background_light_transparent"></View>
+            <Button
+                android:id="@+id/button_b1"
+                android:layout_width="200dp"
+                android:layout_height="0dp"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:paddingVertical="20dp"
+                android:background="@android:drawable/screen_background_dark"
+                android:onClick="mOnClick" />
+            <Button
+                android:id="@+id/button_b2"
+                android:layout_width="200dp"
+                android:layout_height="0dp"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:paddingTop="20dp"
+                android:background="@android:drawable/screen_background_dark"
+
+                android:onClick="mOnClick" />
+            <View
+                android:layout_width="200dp"
+                android:layout_height="0dp"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:background="@android:drawable/screen_background_light_transparent"></View>
+            <Button
+                android:id="@+id/button_b3"
+                android:layout_width="200dp"
+                android:layout_height="0dp"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:paddingVertical="20dp"
+                android:background="@android:drawable/screen_background_dark"
+                android:onClick="mOnClick" />
+            <Button
+                android:id="@+id/button_b4"
+                android:layout_width="200dp"
+                android:layout_height="0dp"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:paddingVertical="20dp"
+                android:background="@android:drawable/screen_background_dark"
+                android:onClick="mOnClick" />
+            <Button
+                android:id="@+id/button_b5"
+                android:layout_width="200dp"
+                android:layout_height="0dp"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:paddingVertical="20dp"
+                android:background="@android:drawable/screen_background_dark"
+                android:onClick="mOnClick" />
+            <View
+                android:layout_width="200dp"
+                android:layout_height="0dp"
+                android:layout_gravity="right"
+                android:layout_weight="1.5"
+                android:background="@android:drawable/screen_background_light_transparent"></View>
+            <!--
+            <Button
+                android:id="@+id/button_b1"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="58dp"
+                android:background="@android:drawable/screen_background_dark"
+                android:onClick="mOnClick" />
+
+              <Button
+                android:id="@+id/button_b2"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="33dp"
+                android:background="@android:drawable/screen_background_dark"
+                android:onClick="mOnClick" />
+
+             <Button
+                  android:id="@+id/button_b3"
+                  android:layout_width="200dp"
+                  android:layout_height="50dp"
+                  android:layout_gravity="right"
+                  android:layout_marginTop="116dp"
+                  android:background="@android:drawable/screen_background_dark"
+                  android:onClick="mOnClick" />
+
+            <Button
+                 android:id="@+id/button_b4"
+                 android:layout_width="200dp"
+                 android:layout_height="50dp"
+                 android:layout_gravity="right"
+                 android:layout_marginTop="33dp"
+                 android:background="@android:drawable/screen_background_dark"
+                 android:onClick="mOnClick" />
+
+            <Button
+                android:id="@+id/button_b5"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="33dp"
+                android:background="@android:drawable/screen_background_dark"
+                android:onClick="mOnClick" />
+                -->
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>
+
+

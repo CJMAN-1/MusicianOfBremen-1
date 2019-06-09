@@ -415,7 +415,5 @@ public class Guitar_class extends Activity implements View.OnClickListener {
                 playThread.run();
                 break;
         }
-    ///////////////
-
-
+    }
 }

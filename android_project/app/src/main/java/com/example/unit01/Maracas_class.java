@@ -209,19 +209,6 @@ public class Maracas_class extends Activity implements SensorEventListener, View
                 Log.d ("1record",""+timeArray.size());
             }
         }
-        /*
-        else if(Math.abs(area2)  > 10){
-            Log.d("swing", "onSensorChanged: 2번");
-            img.setImageResource(R.drawable.mara3);
-            maracas_pool.play(chaka2,1,1,0,0,1);
-            area2 = 0;
-            /////////////////////////////////
-            if(recordFlag ==1){
-                tEnd= System.currentTimeMillis();
-                timeArray.add(new tick(1,(tEnd-tStart)));
-                Log.d ("1record",""+timeArray.size()) ;
-            }
-        }*/
         else {
             Log.d("swing", "onSensorChanged: 없음");
             img.setImageResource(R.drawable.mara1);

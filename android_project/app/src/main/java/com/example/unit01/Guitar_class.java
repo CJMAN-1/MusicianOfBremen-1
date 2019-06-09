@@ -2,6 +2,7 @@ package com.example.unit01;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Build;
@@ -41,6 +42,12 @@ public class Guitar_class extends Activity implements View.OnClickListener {
     private ImageButton F;
     private ImageButton G;
     private ImageButton Am;
+    private ImageButton PianoChange;
+    private ImageButton GuitarChange;
+    private ImageButton MaracasChange;
+    private Intent intent1;
+    private Intent intent2;
+    private Intent intent3;
 
     private int C1, C2, C3, C4, C5, C6, Am1, Am2, Am3, Am4, Am5, Am6, F1, F2, F3, F4, F5, F6, G1, G2, G3, G4, G5, G6;
 
@@ -130,7 +137,6 @@ public class Guitar_class extends Activity implements View.OnClickListener {
         drawerLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                Log.v("ondd", "시빠끄");
                 return false;
             }
         });
@@ -144,7 +150,6 @@ public class Guitar_class extends Activity implements View.OnClickListener {
         mLinearlayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                Log.v("ondd", "시빠끄22");
                 y = event.getRawY();
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
@@ -258,11 +263,13 @@ public class Guitar_class extends Activity implements View.OnClickListener {
             }
         });
 
-        C = (ImageButton) findViewById(R.id.code_c);
-        F = (ImageButton) findViewById(R.id.code_f);
-        G = (ImageButton) findViewById(R.id.code_g);
-        Am = (ImageButton) findViewById(R.id.code_am);
-
+        C = (ImageButton)findViewById(R.id.code_c);
+        F = (ImageButton)findViewById(R.id.code_f);
+        G = (ImageButton)findViewById(R.id.code_g);
+        Am = (ImageButton)findViewById(R.id.code_am);
+        PianoChange = (ImageButton)findViewById(R.id.piano_change);
+        GuitarChange = (ImageButton)findViewById(R.id.guitar_change);
+        MaracasChange = (ImageButton)findViewById(R.id.maracas_change);
 
         C.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -290,6 +297,34 @@ public class Guitar_class extends Activity implements View.OnClickListener {
             public void onClick(View v) {
                 Log.d("Touch", "onClick: Am");
                 code = 3;
+            }
+        });
+
+        PianoChange.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Log.d("Touch", "onClick: Piano Changed");
+                intent1 = new Intent(Guitar_class.this, Piano_class.class);
+                startActivity(intent1);
+                finish();
+            }
+        });
+        GuitarChange.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Log.d("Touch", "onClick: Guitar Changed");
+                intent2 = new Intent(Guitar_class.this, Guitar_class.class);
+                startActivity(intent2);
+                finish();
+            }
+        });
+        MaracasChange.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Log.d("Touch", "onClick: Maracas Changed");
+                intent3 = new Intent(Guitar_class.this, Maracas_class.class);
+                startActivity(intent3);
+                finish();
             }
         });
 
@@ -326,7 +361,7 @@ public class Guitar_class extends Activity implements View.OnClickListener {
 
 
     }
-
+  
     private class ExampleThread extends Thread {
         private static final String TAG = "ExampleThread";
 
@@ -380,7 +415,6 @@ public class Guitar_class extends Activity implements View.OnClickListener {
                 playThread.run();
                 break;
         }
-    }
     ///////////////
 
 

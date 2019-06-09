@@ -2,6 +2,7 @@ package com.example.unit01;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -34,6 +35,13 @@ public class Maracas_class extends Activity implements SensorEventListener, View
     private float[] pre_sensor = new float[2];
     private float area1;
     private float area2;
+
+    private ImageButton PianoChange;
+    private ImageButton GuitarChange;
+    private ImageButton MaracasChange;
+    private Intent intent1;
+    private Intent intent2;
+    private Intent intent3;
 
     private ImageView img;
     int val=0;
@@ -74,15 +82,44 @@ public class Maracas_class extends Activity implements SensorEventListener, View
         Sensor accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 
-        /////////////
         recordButton = (ImageButton)findViewById(R.id.record);
         playButton = (ImageButton)findViewById(R.id.play);
 
         recordButton.setOnClickListener(this);
         playButton.setOnClickListener(this);
         ////////////////////
+      
+        PianoChange = (ImageButton)findViewById(R.id.piano_change3);
+        GuitarChange = (ImageButton)findViewById(R.id.guitar_change3);
+        MaracasChange = (ImageButton)findViewById(R.id.maracas_change3);
 
-
+        PianoChange.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Log.d("Touch", "onClick: Piano Changed");
+                intent1 = new Intent(Maracas_class.this, Piano_class.class);
+                startActivity(intent1);
+                finish();
+            }
+        });
+        GuitarChange.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Log.d("Touch", "onClick: Guitar Changed");
+                intent2 = new Intent(Maracas_class.this, Guitar_class.class);
+                startActivity(intent2);
+                finish();
+            }
+        });
+        MaracasChange.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Log.d("Touch", "onClick: Maracas Changed");
+                intent3 = new Intent(Maracas_class.this, Maracas_class.class);
+                startActivity(intent3);
+                finish();
+            }
+        });
     }
 
     ///////////////////////////

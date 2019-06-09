@@ -47,6 +47,7 @@ public class MainActivity extends Activity{
     private Intent intent1;
     private Intent intent2;
     private Intent intent3;
+    private Intent intent4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +95,8 @@ public class MainActivity extends Activity{
             @Override
             public void onClick(View v) {
                 Log.d("Touch", "onClick: Playlist");
+                intent4 = new Intent(MainActivity.this, Playlist_class.class);
+                startActivity(intent4);
             }
         });
 

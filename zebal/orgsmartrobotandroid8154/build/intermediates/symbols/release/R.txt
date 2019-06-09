@@ -1,2 +1,0 @@
-int string roboid_android_api 0x7f140001
-int string roboid_smartrobot_api 0x7f140002

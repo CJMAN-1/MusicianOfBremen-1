@@ -6,12 +6,14 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.view.MotionEventCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -22,6 +24,7 @@ import android.widget.Toast;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+
 
 public class Guitar_class extends Activity {
 
@@ -47,8 +50,6 @@ public class Guitar_class extends Activity {
     private PopupWindow mPopupWindow;
     private LinearLayout mLinearlayout;
     ///
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,44 +57,175 @@ public class Guitar_class extends Activity {
 
 
         ///////////////
-//        mContext = getApplicationContext();
-//        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        drawerView = (View) findViewById(R.id.drawer);
-//        instrumentView = (LinearLayout) findViewById(R.id.instrument_layout);
-//        mLinearlayout = (LinearLayout)findViewById(R.id.instrument_layout) ;
-//
-//        buttonCloseDrawer = (ImageButton) findViewById(R.id.play);
-//        buttonCloseDrawer.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
-//                View customView = inflater.inflate(R.layout.custom_layout,null);
-//                mPopupWindow = new PopupWindow(
-//                        customView,
-//                        RelativeLayout.LayoutParams.WRAP_CONTENT,
-//                        RelativeLayout.LayoutParams.WRAP_CONTENT
-//                );
-//                if(Build.VERSION.SDK_INT>=22){
-//                    mPopupWindow.setElevation(5.0f);
-//                }
-//
-//                ImageButton closeButton = (ImageButton) customView.findViewById(R.id.ib_close);
-//
-//                // Set a click listener for the popup window close button
-//                closeButton.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        // Dismiss the popup window
-//                        mPopupWindow.dismiss();
-//                    }
-//                });
-//
-//                mPopupWindow.showAtLocation(mLinearlayout, Gravity.CENTER,0,0);
-//
-//            }
-//        });
+        mContext = getApplicationContext();
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerView = (View) findViewById(R.id.drawer);
+        instrumentView = (LinearLayout) findViewById(R.id.instrument_layout);
+        mLinearlayout = (LinearLayout)findViewById(R.id.instrument_layout) ;
 
+        buttonCloseDrawer = (ImageButton) findViewById(R.id.play);
+        buttonCloseDrawer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
+                View customView = inflater.inflate(R.layout.custom_layout,null);
+                mPopupWindow = new PopupWindow(
+                        customView,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT
+                );
+                if(Build.VERSION.SDK_INT>=22){
+                    mPopupWindow.setElevation(5.0f);
+                }
+
+                ImageButton closeButton = (ImageButton) customView.findViewById(R.id.ib_close);
+
+                // Set a click listener for the popup window close button
+                closeButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        // Dismiss the popup window
+                        mPopupWindow.dismiss();
+                    }
+                });
+
+                mPopupWindow.showAtLocation(mLinearlayout, Gravity.CENTER,0,0);
+
+            }
+        });
+
+        drawerLayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Log.v("ondd","시빠끄");
+                return false;
+            }
+        });
+        drawerView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Guitar_class.super.onTouchEvent(event);
+                Log.v("ondd","시빠끄11");
+                return true;
+            }
+        });
+        mLinearlayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Log.v("ondd","시빠끄22");
+                y = event.getRawY();
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN :
+                        Log.d("Touch", "onTouch: ACTION Down");
+
+                        break;
+                    case MotionEvent.ACTION_MOVE :
+                        Log.d("Touch", "onTouch: ACTION MOVE");
+                        Log.d("Touch","onTouch: y"+ y);
+                        if(Math.abs(y-pre_y)>150) {
+                            if (Math.abs(y - 280) < area) {
+                                switch (code) {
+                                    case 0:
+                                        guitar_pool.play(C1, 1, 1, 0, 0, 1);
+                                        break;
+                                    case 1:
+                                        guitar_pool.play(F1, 1, 1, 0, 0, 1);
+                                        break;
+                                    case 2:
+                                        guitar_pool.play(G1, 1, 1, 0, 0, 1);
+                                        break;
+                                    case 3:
+                                        guitar_pool.play(Am1, 1, 1, 0, 0, 1);
+                                        break;
+                                }
+                            } else if (Math.abs(y - 450) < area) {
+                                switch (code) {
+                                    case 0:
+                                        guitar_pool.play(C2, 1, 1, 0, 0, 1);
+                                        break;
+                                    case 1:
+                                        guitar_pool.play(F2, 1, 1, 0, 0, 1);
+                                        break;
+                                    case 2:
+                                        guitar_pool.play(G2, 1, 1, 0, 0, 1);
+                                        break;
+                                    case 3:
+                                        guitar_pool.play(Am2, 1, 1, 0, 0, 1);
+                                        break;
+                                }
+                            } else if (Math.abs(y - 650) < area) {
+                                switch (code) {
+                                    case 0:
+                                        guitar_pool.play(C3, 1, 1, 0, 0, 1);
+                                        break;
+                                    case 1:
+                                        guitar_pool.play(F3, 1, 1, 0, 0, 1);
+                                        break;
+                                    case 2:
+                                        guitar_pool.play(G3, 1, 1, 0, 0, 1);
+                                        break;
+                                    case 3:
+                                        guitar_pool.play(Am3, 1, 1, 0, 0, 1);
+                                        break;
+                                }
+                            } else if (Math.abs(y - 800) < area) {
+                                switch (code) {
+                                    case 0:
+                                        guitar_pool.play(C4, 1, 1, 0, 0, 1);
+                                        break;
+                                    case 1:
+                                        guitar_pool.play(F4, 1, 1, 0, 0, 1);
+                                        break;
+                                    case 2:
+                                        guitar_pool.play(G4, 1, 1, 0, 0, 1);
+                                        break;
+                                    case 3:
+                                        guitar_pool.play(Am4, 1, 1, 0, 0, 1);
+                                        break;
+                                }
+                            } else if (Math.abs(y - 960) < area) {
+                                switch (code) {
+                                    case 0:
+                                        guitar_pool.play(C5, 1, 1, 0, 0, 1);
+                                        break;
+                                    case 1:
+                                        guitar_pool.play(F5, 1, 1, 0, 0, 1);
+                                        break;
+                                    case 2:
+                                        guitar_pool.play(G5, 1, 1, 0, 0, 1);
+                                        break;
+                                    case 3:
+                                        guitar_pool.play(Am5, 1, 1, 0, 0, 1);
+                                        break;
+                                }
+                            } else if (Math.abs(y - 1130) < area) {
+                                switch (code) {
+                                    case 0:
+                                        guitar_pool.play(C6, 1, 1, 0, 0, 1);
+                                        break;
+                                    case 1:
+                                        guitar_pool.play(F6, 1, 1, 0, 0, 1);
+                                        break;
+                                    case 2:
+                                        guitar_pool.play(G6, 1, 1, 0, 0, 1);
+                                        break;
+                                    case 3:
+                                        guitar_pool.play(Am6, 1, 1, 0, 0, 1);
+                                        break;
+                                }
+                            }
+                            pre_y = y;
+                        }
+                        break;
+                    case MotionEvent.ACTION_UP :
+                        Log.d("Touch", "onTouch: ACTION UP");
+                        pre_y = 0;
+                        break;
+                }
+                return true;
+            }
+        });
 
         ///////////////
 
@@ -165,8 +297,6 @@ public class Guitar_class extends Activity {
 
     }
 
-    ////////////////////////
-    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -184,119 +314,5 @@ public class Guitar_class extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }*/
-    /////////////////////////
-    @Override
-            public boolean onTouchEvent(MotionEvent event) {
-                y = event.getRawY();
-                switch (event.getAction()){
-            case MotionEvent.ACTION_DOWN :
-                Log.d("Touch", "onTouch: ACTION Down");
-
-            break;
-            case MotionEvent.ACTION_MOVE :
-                Log.d("Touch", "onTouch: ACTION MOVE");
-                Log.d("Touch","onTouch: y"+ y);
-                if(Math.abs(y-pre_y)>150) {
-                    if (Math.abs(y - 280) < area) {
-                        switch (code) {
-                            case 0:
-                                guitar_pool.play(C1, 1, 1, 0, 0, 1);
-                                break;
-                            case 1:
-                                guitar_pool.play(F1, 1, 1, 0, 0, 1);
-                                break;
-                            case 2:
-                                guitar_pool.play(G1, 1, 1, 0, 0, 1);
-                                break;
-                            case 3:
-                                guitar_pool.play(Am1, 1, 1, 0, 0, 1);
-                                break;
-                        }
-                    } else if (Math.abs(y - 450) < area) {
-                        switch (code) {
-                            case 0:
-                                guitar_pool.play(C2, 1, 1, 0, 0, 1);
-                                break;
-                            case 1:
-                                guitar_pool.play(F2, 1, 1, 0, 0, 1);
-                                break;
-                            case 2:
-                                guitar_pool.play(G2, 1, 1, 0, 0, 1);
-                                break;
-                            case 3:
-                                guitar_pool.play(Am2, 1, 1, 0, 0, 1);
-                                break;
-                        }
-                    } else if (Math.abs(y - 650) < area) {
-                        switch (code) {
-                            case 0:
-                                guitar_pool.play(C3, 1, 1, 0, 0, 1);
-                                break;
-                            case 1:
-                                guitar_pool.play(F3, 1, 1, 0, 0, 1);
-                                break;
-                            case 2:
-                                guitar_pool.play(G3, 1, 1, 0, 0, 1);
-                                break;
-                            case 3:
-                                guitar_pool.play(Am3, 1, 1, 0, 0, 1);
-                                break;
-                        }
-                    } else if (Math.abs(y - 800) < area) {
-                        switch (code) {
-                            case 0:
-                                guitar_pool.play(C4, 1, 1, 0, 0, 1);
-                                break;
-                            case 1:
-                                guitar_pool.play(F4, 1, 1, 0, 0, 1);
-                                break;
-                            case 2:
-                                guitar_pool.play(G4, 1, 1, 0, 0, 1);
-                                break;
-                            case 3:
-                                guitar_pool.play(Am4, 1, 1, 0, 0, 1);
-                                break;
-                        }
-                    } else if (Math.abs(y - 960) < area) {
-                        switch (code) {
-                            case 0:
-                                guitar_pool.play(C5, 1, 1, 0, 0, 1);
-                                break;
-                            case 1:
-                                guitar_pool.play(F5, 1, 1, 0, 0, 1);
-                                break;
-                            case 2:
-                                guitar_pool.play(G5, 1, 1, 0, 0, 1);
-                                break;
-                            case 3:
-                                guitar_pool.play(Am5, 1, 1, 0, 0, 1);
-                                break;
-                        }
-                    } else if (Math.abs(y - 1130) < area) {
-                        switch (code) {
-                            case 0:
-                                guitar_pool.play(C6, 1, 1, 0, 0, 1);
-                                break;
-                            case 1:
-                                guitar_pool.play(F6, 1, 1, 0, 0, 1);
-                                break;
-                            case 2:
-                                guitar_pool.play(G6, 1, 1, 0, 0, 1);
-                                break;
-                            case 3:
-                                guitar_pool.play(Am6, 1, 1, 0, 0, 1);
-                                break;
-                        }
-                    }
-                    pre_y = y;
-                }
-                break;
-            case MotionEvent.ACTION_UP :
-                Log.d("Touch", "onTouch: ACTION UP");
-                pre_y = 0;
-                break;
-        }
-        return true;
     }
 }

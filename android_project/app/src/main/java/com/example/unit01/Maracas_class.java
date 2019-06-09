@@ -11,9 +11,11 @@ import android.media.SoundPool;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.ImageView;
-
-public class Maracas_class extends android.support.v4.view.ViewPager implements SensorEventListener{
+import android.support.v4.widget.DrawerLayout;
+import android.view.*;
+public class Maracas_class extends Activity implements SensorEventListener{
 
     SoundPool maracas_pool;
 
@@ -88,22 +90,5 @@ public class Maracas_class extends android.support.v4.view.ViewPager implements 
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
     }
 
-    @Override
-    public boolean onInterceptTouchEvent(MotionEvent event){
-        return true;
-    }
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        //super.onTouchEvent(event);
-        Log.d("Touch", "onTouch: ACTION MOVE");
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                Log.d("Touch", "onTouch: ACTION Down");
 
-                break;
-            case MotionEvent.ACTION_MOVE:
-                Log.d("Touch", "onTouch: ACTION MOVE");
-        }
-        return false;
-    }
 }

@@ -27,7 +27,11 @@
             android:screenOrientation="landscape">
         </activity>
         <activity
-            android:name="com.example.unit01.Maracas_class"
+        android:name="com.example.unit01.Maracas_class"
+        android:screenOrientation="landscape">
+        </activity>
+        <activity
+            android:name="com.example.unit01.Playlist_class"
             android:screenOrientation="landscape">
         </activity>
     </application>

@@ -1,5 +1,6 @@
 package com.example.unit01;
 
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageButton;
 
 public class Piano_class extends AppCompatActivity {
 
@@ -19,6 +21,19 @@ public class Piano_class extends AppCompatActivity {
     int sol;
     int ra;
     int si;
+    int dosharp;
+    int resharp;
+    int pasharp;
+    int solsharp;
+    int rasharp;
+    private ImageButton PianoChange;
+    private ImageButton GuitarChange;
+    private ImageButton MaracasChange;
+    private Intent intent1;
+    private Intent intent2;
+    private Intent intent3;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,13 +44,51 @@ public class Piano_class extends AppCompatActivity {
         setContentView(R.layout.activity_piano);
 
         piano_pool=new SoundPool(4, AudioManager.STREAM_MUSIC,0);
-        d1=piano_pool.load(this,R.raw.d1,1);
-        re=piano_pool.load(this,R.raw.re,1);
-        mi=piano_pool.load(this,R.raw.mi,1);
-        pa=piano_pool.load(this,R.raw.pa,1);
-        sol=piano_pool.load(this,R.raw.sol,1);
-        ra=piano_pool.load(this,R.raw.ra,1);
-        si=piano_pool.load(this,R.raw.si,1);
+        d1 = piano_pool.load(this,R.raw.white2,1);
+        re = piano_pool.load(this,R.raw.white3,1);
+        mi = piano_pool.load(this,R.raw.white1,1);
+        pa = piano_pool.load(this,R.raw.white4,1);
+        sol = piano_pool.load(this,R.raw.white5,1);
+        ra = piano_pool.load(this,R.raw.white6,1);
+        si = piano_pool.load(this,R.raw.white7,1);
+        dosharp = piano_pool.load(this,R.raw.black1,1);
+        resharp = piano_pool.load(this,R.raw.black2,1);
+        pasharp = piano_pool.load(this,R.raw.black3,1);
+        solsharp = piano_pool.load(this,R.raw.black4,1);
+        rasharp = piano_pool.load(this,R.raw.black5,1);
+
+        PianoChange = (ImageButton)findViewById(R.id.piano_change2);
+        GuitarChange = (ImageButton)findViewById(R.id.guitar_change2);
+        MaracasChange = (ImageButton)findViewById(R.id.maracas_change2);
+
+        PianoChange.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Log.d("Touch", "onClick: Piano Changed");
+                intent1 = new Intent(Piano_class.this, Piano_class.class);
+                startActivity(intent1);
+                finish();
+            }
+        });
+        GuitarChange.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Log.d("Touch", "onClick: Guitar Changed");
+                intent2 = new Intent(Piano_class.this, Guitar_class.class);
+                startActivity(intent2);
+                finish();
+            }
+        });
+        MaracasChange.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Log.d("Touch", "onClick: Maracas Changed");
+                intent3 = new Intent(Piano_class.this, Maracas_class.class);
+                startActivity(intent3);
+                finish();
+            }
+        });
+
     }
     public void mOnClick(View v){
 
@@ -63,20 +116,22 @@ public class Piano_class extends AppCompatActivity {
                 piano_pool.play(re,1,1,0,0,1);
                 break;
             case R.id.button_b1:
-                piano_pool.play(re,1,1,0,0,1);
+                piano_pool.play(dosharp,1,1,0,0,1);
                 break;
             case R.id.button_b2:
-                piano_pool.play(si,1,1,0,0,1);
+                piano_pool.play(resharp,1,1,0,0,1);
                 break;
             case R.id.button_b3:
-                piano_pool.play(ra,1,1,0,0,1);
+                piano_pool.play(pasharp,1,1,0,0,1);
                 break;
             case R.id.button_b4:
-                piano_pool.play(pa,1,1,0,0,1);
+                piano_pool.play(solsharp,1,1,0,0,1);
                 break;
             case R.id.button_b5:
-                piano_pool.play(mi,1,1,0,0,1);
+                piano_pool.play(rasharp,1,1,0,0,1);
                 break;
+            case R.id.piano_change2:
+
         }
     }
     @Override
@@ -119,9 +174,13 @@ public class Piano_class extends AppCompatActivity {
         }
         else if(keyCode == event.KEYCODE_BACK){
             Log.d("백키", "onKeyDown: 종료");
+            super.onBackPressed();
         }
 
         return true;
     }
-
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+    }
 }

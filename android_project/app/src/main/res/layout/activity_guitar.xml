@@ -175,8 +175,8 @@
                 <ImageButton
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:src="@drawable/button_record"
-                    android:id="@+id/piano"
+                    android:src="@drawable/turned_piano"
+                    android:id="@+id/piano_change"
                     android:layout_marginVertical="1dp"
                     android:layout_marginHorizontal="3dp"
                     android:scaleType="fitXY"
@@ -188,8 +188,8 @@
                 <ImageButton
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:src="@drawable/button_play"
-                    android:id="@+id/guitar"
+                    android:src="@drawable/guitar"
+                    android:id="@+id/guitar_change"
                     android:layout_marginVertical="1dp"
                     android:layout_marginHorizontal="3dp"
                     android:scaleType="fitXY"
@@ -201,8 +201,8 @@
                 <ImageButton
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:src="@drawable/button_record"
-                    android:id="@+id/maracas"
+                    android:src="@drawable/maracas"
+                    android:id="@+id/maracas_change"
                     android:layout_marginVertical="1dp"
                     android:layout_marginHorizontal="3dp"
                     android:scaleType="fitXY"

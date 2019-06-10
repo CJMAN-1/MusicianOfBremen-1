@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
@@ -60,6 +61,7 @@ public class Piano_class extends AppCompatActivity {
         PianoChange = (ImageButton)findViewById(R.id.piano_change2);
         GuitarChange = (ImageButton)findViewById(R.id.guitar_change2);
         MaracasChange = (ImageButton)findViewById(R.id.maracas_change2);
+
 
         PianoChange.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -131,7 +133,23 @@ public class Piano_class extends AppCompatActivity {
                 piano_pool.play(rasharp,1,1,0,0,1);
                 break;
             case R.id.piano_change2:
-
+            Log.d("Touch", "onClick: Piano Changed");
+            intent1 = new Intent(Piano_class.this, Piano_class.class);
+            startActivity(intent1);
+            finish();
+            break;
+            case R.id.guitar_change2:
+                Log.d("Touch", "onClick: Piano Changed");
+                intent1 = new Intent(Piano_class.this, Guitar_class.class);
+                startActivity(intent1);
+                finish();
+                break;
+            case R.id.maracas_change2:
+                Log.d("Touch", "onClick: Piano Changed");
+                intent1 = new Intent(Piano_class.this, Maracas_class.class);
+                startActivity(intent1);
+                finish();
+                break;
         }
     }
     @Override

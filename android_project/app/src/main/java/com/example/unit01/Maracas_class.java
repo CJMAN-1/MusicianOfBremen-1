@@ -123,7 +123,6 @@ public class Maracas_class extends MainActivity implements SensorEventListener, 
                 Log.d ("1record",""+timeArray.size());
             }
         }
-
         else {
             Log.d("swing", "onSensorChanged: 없음");
             img.setImageResource(R.drawable.mara1);

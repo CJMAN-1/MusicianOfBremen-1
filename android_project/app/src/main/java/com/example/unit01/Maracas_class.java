@@ -39,8 +39,12 @@ public class Maracas_class extends MainActivity implements SensorEventListener, 
     private Intent intent3;
 
     private ImageView img;
-    int val=0;
+    int a=0;
 
+    Button button1;
+    Button button2;
+    TextView textView;
+    long size = 0;
 
 
 
@@ -95,6 +99,35 @@ public class Maracas_class extends MainActivity implements SensorEventListener, 
                 finish();
             }
         });
+
+        button1 = (Button)findViewById(R.id.button1);
+        button2 = (Button)findViewById(R.id.button2);
+        textView = (TextView)findViewById(R.id.text1);
+        a=0;
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                size = preferences.getLong("norae"+0,0);
+                long tt, id, tim;
+                for(int i=0;i<size;i++){
+                    tt = preferences.getLong("norae"+(3*i +1),0);
+                    id = preferences.getLong("norae"+(3*i +2),0);
+                    tim = preferences.getLong("norae"+(3*i +3),0);
+
+                    playArray.add(new tick((int)tt,(int)id,tim));
+                }
+            }
+        });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                a++;
+
+                textView.setText("" + size);
+            }
+        });
+
+        editor.clear();
         backflag =1;
     }
 

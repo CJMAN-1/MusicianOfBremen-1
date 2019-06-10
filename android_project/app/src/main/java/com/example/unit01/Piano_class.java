@@ -12,21 +12,9 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
 
-public class Piano_class extends AppCompatActivity {
+public class Piano_class extends MainActivity {
 
-    SoundPool piano_pool;
-    int d1;
-    int re;
-    int mi;
-    int pa;
-    int sol;
-    int ra;
-    int si;
-    int dosharp;
-    int resharp;
-    int pasharp;
-    int solsharp;
-    int rasharp;
+
     private ImageButton PianoChange;
     private ImageButton GuitarChange;
     private ImageButton MaracasChange;
@@ -38,25 +26,12 @@ public class Piano_class extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Window win=getWindow();
-        win.requestFeature(Window.FEATURE_NO_TITLE);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-
         setContentView(R.layout.activity_piano);
 
-        piano_pool=new SoundPool(4, AudioManager.STREAM_MUSIC,0);
-        d1 = piano_pool.load(this,R.raw.white2,1);
-        re = piano_pool.load(this,R.raw.white3,1);
-        mi = piano_pool.load(this,R.raw.white1,1);
-        pa = piano_pool.load(this,R.raw.white4,1);
-        sol = piano_pool.load(this,R.raw.white5,1);
-        ra = piano_pool.load(this,R.raw.white6,1);
-        si = piano_pool.load(this,R.raw.white7,1);
-        dosharp = piano_pool.load(this,R.raw.black1,1);
-        resharp = piano_pool.load(this,R.raw.black2,1);
-        pasharp = piano_pool.load(this,R.raw.black3,1);
-        solsharp = piano_pool.load(this,R.raw.black4,1);
-        rasharp = piano_pool.load(this,R.raw.black5,1);
+        recordButton = (ImageButton) findViewById(R.id.record);
+        playButton = (ImageButton) findViewById(R.id.play);
+        recordButton.setOnClickListener(this);
+        playButton.setOnClickListener(this);
 
         PianoChange = (ImageButton)findViewById(R.id.piano_change2);
         GuitarChange = (ImageButton)findViewById(R.id.guitar_change2);
@@ -90,7 +65,7 @@ public class Piano_class extends AppCompatActivity {
                 finish();
             }
         });
-        //backflag =1;
+        backflag =1;
     }
     public void mOnClick(View v){
 
@@ -150,6 +125,50 @@ public class Piano_class extends AppCompatActivity {
                 startActivity(intent1);
                 finish();
                 break;
+        }
+
+        if(recordFlag ==1){
+            tEnd= System.currentTimeMillis();
+            switch(v.getId())
+            {
+                case R.id.button_do:
+                    timeArray.add(new tick(2,idd1,(tEnd-tStart)));
+                    break;
+                case R.id.button_si:
+                    timeArray.add(new tick(2,idsi,(tEnd-tStart)));
+                    break;
+                case R.id.button_ra:
+                    timeArray.add(new tick(2,idra,(tEnd-tStart)));
+                    break;
+                case R.id.button_sol:
+                    timeArray.add(new tick(2,idsol,(tEnd-tStart)));
+                    break;
+                case R.id.button_pa:
+                    timeArray.add(new tick(2,idpa,(tEnd-tStart)));
+                    break;
+                case R.id.button_mi:
+                    timeArray.add(new tick(2,idmi,(tEnd-tStart)));
+                    break;
+                case R.id.button_re:
+                    timeArray.add(new tick(2,idre,(tEnd-tStart)));
+                    break;
+                case R.id.button_b1:
+                    timeArray.add(new tick(2,iddosharp,(tEnd-tStart)));
+                    break;
+                case R.id.button_b2:
+                    timeArray.add(new tick(2,idresharp,(tEnd-tStart)));
+                    break;
+                case R.id.button_b3:
+                    timeArray.add(new tick(2,idpasharp,(tEnd-tStart)));
+                    break;
+                case R.id.button_b4:
+                    timeArray.add(new tick(2,idsolsharp,(tEnd-tStart)));
+                    break;
+                case R.id.button_b5:
+                    timeArray.add(new tick(2,idrasharp,(tEnd-tStart)));
+                    break;
+            }
+            Log.d ("1record",""+timeArray.size());
         }
     }
     @Override

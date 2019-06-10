@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: D:\\Git-Local\\MusicianOfBremen\\android_project\\orgsmartrobotandroid8154\\src\\main\\aidl\\org\\smartrobot\\android\\ipc\\rc.aidl
+ * Original file: C:\\Git-Local\\MusicianOfBremen-1\\android_project\\orgsmartrobotandroid8154\\src\\main\\aidl\\org\\smartrobot\\android\\ipc\\rc.aidl
  */
 package org.smartrobot.android.ipc;
 /**

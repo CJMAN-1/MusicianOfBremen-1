@@ -16,7 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import java.util.ArrayList;
 
-public class Playlist_class extends Activity
+public class Playlist_class extends MainActivity
 {
     private ArrayList<MusicInfo> musics = new ArrayList<MusicInfo>();
 
@@ -30,6 +30,7 @@ public class Playlist_class extends Activity
             musics.add(new MusicInfo(R.drawable.music, "갑돌이", "4"));
 
         listview.setAdapter(new PlayListAdapter(this, musics));
+        backflag =1;
     }
 
     private class MusicInfo {
@@ -73,6 +74,5 @@ public class Playlist_class extends Activity
         TextView name;
         TextView playtime;
     }
-
 }
 

@@ -88,7 +88,7 @@ public class Piano_class extends AppCompatActivity {
                 finish();
             }
         });
-
+        //backflag =1;
     }
     public void mOnClick(View v){
 
@@ -179,6 +179,7 @@ public class Piano_class extends AppCompatActivity {
 
         return true;
     }
+
     @Override
     public void onBackPressed(){
         super.onBackPressed();

@@ -107,12 +107,12 @@ public class Maracas_class extends MainActivity implements SensorEventListener, 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                size = preferences.getLong("norae"+0,0);
+                size = preferences.getLong("norae"+last+0,0);
                 long tt, id, tim;
                 for(int i=0;i<size;i++){
-                    tt = preferences.getLong("norae"+(3*i +1),0);
-                    id = preferences.getLong("norae"+(3*i +2),0);
-                    tim = preferences.getLong("norae"+(3*i +3),0);
+                    tt = preferences.getLong("norae"+last+(3*i +1),0);
+                    id = preferences.getLong("norae"+last+(3*i +2),0);
+                    tim = preferences.getLong("norae"+last+(3*i +3),0);
 
                     playArray.add(new tick((int)tt,(int)id,tim));
                 }
@@ -121,7 +121,16 @@ public class Maracas_class extends MainActivity implements SensorEventListener, 
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                a++;
+                size = preferences.getLong("norae"+last+0,0);
+
+                long tt, id, tim;
+                for(int i=0;i<size;i++){
+                    tt = preferences.getLong("norae"+last+(3*i +1),0);
+                    id = preferences.getLong("norae"+last+(3*i +2),0);
+                    tim = preferences.getLong("norae"+last+(3*i +3),0);
+
+                    playArray.add(new tick((int)tt,(int)id,tim));
+                }
 
                 textView.setText("" + size);
             }

@@ -83,6 +83,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public int backflag =0;
     SharedPreferences preferences ;
     SharedPreferences.Editor editor;
+
+    int noraeNum = 0;
+    int last = 0;
+    int just =0;
     //////////////////////////////////////////
 
     @Override
@@ -425,16 +429,18 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
                     int size = timeArray.size();
 
-                    editor.putLong("norae"+0 , size);
+                    editor.putLong("norae"+last+0 , size);
                     for(int k=0;k<size;k++){
 
                         tick ttemp = (tick)timeArray.get(k);
 
-                        editor.putLong("norae"+(3*k +1) , ttemp.type);
-                        editor.putLong("norae"+(3*k +2) , ttemp.id);
-                        editor.putLong("norae"+(3*k +3) , ttemp.time);
+                        editor.putLong("norae"+last+(3*k +1) , ttemp.type);
+                        editor.putLong("norae"+last+(3*k +2) , ttemp.id);
+                        editor.putLong("norae"+last+(3*k +3) , ttemp.time);
                     }
                     editor.commit();
+                    noraeNum++;
+                    last++;
                     break;
                 }
 
